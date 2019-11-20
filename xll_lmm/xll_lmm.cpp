@@ -20,6 +20,7 @@ AddIn xai_xllproject(
     )
 );
 
+#pragma warning(disable: 4267)
 //!!! Implement
 //AddIn xai_lmm_advance
 //Return the bumped forwards past u. See skip example below.
@@ -42,7 +43,7 @@ _FP12* WINAPI xll_lmm_advance(double u, _FP12* pt, _FP12* pf, _FP12* ps, double 
 	static xll::FP12 result;
 
 	try {
-		auto n = size(*pt);
+		INT32 n = size(*pt);
 
 		ensure(n == size(*pf));
 		ensure(n == size(*ps));
@@ -126,7 +127,7 @@ _FP12* WINAPI xll_skip(double u, _FP12* pt)
 	static xll::FP12 result;
 
 	double* t = &pt->array[0]; // a pointer to modify
-	auto n = skip(u, size(*pt), t);
+	size_t n = skip(u, size(*pt), t);
 	result.resize(n, 1);
 	std::copy(t, t + n, result.array());
 

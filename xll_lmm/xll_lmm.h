@@ -1,5 +1,5 @@
 // xll_lmm.h
-#include "xll12/xll/xll.h"
+#include "../xll12/xll/xll.h"
 
 // Function Wizard category
 #ifndef CATEGORY

@@ -149,7 +149,7 @@
     <ClCompile Include="xll_lmm.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="xll12\xll12.vcxproj">
+    <ProjectReference Include="..\xll12\xll12.vcxproj">
       <Project>{3563c165-8a72-4be5-b8af-fd5904c9030e}</Project>
     </ProjectReference>
   </ItemGroup>
