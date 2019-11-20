@@ -101,6 +101,21 @@ _FP12* WINAPI xll_lmm_to_forwards(const _FP12* pt, _FP12* pf, const _FP12* ps)
 	return pf;
 }
 
+AddIn xai_lmm_par_coupon(
+	Function(XLL_DOUBLE, L"?xll_lmm_par_coupon", L"XLL.LMM.PAR_COUPON")
+	.Arg(XLL_FP, L"t", L"is an array of times. ")
+	.Arg(XLL_FP, L"f", L"is an array of futures. ")
+	.Volatile()
+	.Category(CATEGORY)
+	.FunctionHelp(L"Return swap par coupons given forwards. ")
+	.Documentation(L"Par coupon. ")
+);
+double WINAPI xll_lmm_par_coupon(const _FP12* pt, _FP12* pf)
+{
+#pragma XLLEXPORT
+	return fms::lmm::par_coupon(size(*pt), pt->array, pf->array);
+}
+
 #ifdef _DEBUG
 
 // Skip to t[i-1] <= i < u

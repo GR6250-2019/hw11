@@ -79,4 +79,20 @@ namespace fms::lmm {
 		return n;
 	}
 
+	template<class T, class F>
+	inline F par_coupon(size_t n, const T* t, const F* f)
+	{
+		F D0 = 1, Dn = 1;
+		F D = 0; // sum D_j delta t_;
+		T t0 = 0;
+		for (size_t j = 0; j < n; ++j) {
+			auto dt = t[j] - t0;
+			Dn *= exp(-f[j] * dt);
+			D += Dn * dt;
+			t0 = t[j];
+		}
+
+		return (D0 - Dn) / D;
+	}
+
 }
